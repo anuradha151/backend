@@ -1,14 +1,15 @@
 package lk.viyanga.studms.controller;
 
-import lk.viyanga.studms.dto.subject.StudentSubjectDTO;
 import lk.viyanga.studms.dto.subject.SubjectDTO;
 import lk.viyanga.studms.service.subject.SubjectService;
 import lk.viyanga.studms.util.AbstractController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -36,38 +37,5 @@ public class SubjectController extends AbstractController {
         LOGGER.info("response  - subject/findAll | findAll | payload : {}", all);
         return sendSuccessResponse(all);
     }
-
-    @PostMapping("add/mark")
-    public ResponseEntity<?> addMark(@RequestBody StudentSubjectDTO studentSubjectDTO) {
-        LOGGER.info("request   - add/mark | addMark | payload : {}", studentSubjectDTO);
-        subjectService.addMark(studentSubjectDTO);
-        LOGGER.info("response  - add/mark | addMark | success");
-        return sendSuccessResponse("Marks updated successfully");
-    }
-
-    @GetMapping("/findAll")
-    public ResponseEntity<?> findAllTestMarks() {
-        LOGGER.info("request   - subject/findAll | findAllTestMarks");
-        List<StudentSubjectDTO> all = subjectService.findAllTestMarks();
-        LOGGER.info("response  - subject/findAll | findAllTestMarks | payload : {}", all);
-        return sendSuccessResponse(all);
-    }
-
-    @GetMapping("/findMarkById")
-    public ResponseEntity<?> findMarkById(@Param("studentSubjectTestId") int studentSubjectTestId) {
-        LOGGER.info("request  - subject/findMarkById | findMarkById | studentSubjectTestId : {}", studentSubjectTestId);
-        StudentSubjectDTO response = subjectService.findMarkById(studentSubjectTestId);
-        LOGGER.info("response - subject/findMarkById | findMarkById | payload : {}", response);
-        return sendSuccessResponse(response);
-    }
-
-    @GetMapping("/send_marks")
-    public ResponseEntity<?> sendMarks(@Param("studentSubjectTestId") int studentSubjectTestId) {
-        LOGGER.info("request  - subject/send_marks | sendMarks | studentSubjectTestId : {}", studentSubjectTestId);
-        subjectService.sendMarks(studentSubjectTestId);
-        LOGGER.info("response - subject/send_marks | sendMarks | sent");
-        return sendSuccessResponse("Email is sending");
-    }
-
 
 }
