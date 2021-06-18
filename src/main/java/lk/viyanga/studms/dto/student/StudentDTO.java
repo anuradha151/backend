@@ -1,7 +1,7 @@
 package lk.viyanga.studms.dto.student;
 
-import lk.viyanga.studms.dto.subject.SubjectDTO;
 import lk.viyanga.studms.dto.enums.Gender;
+import lk.viyanga.studms.dto.subject.SubjectDTO;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -13,7 +13,7 @@ import java.util.List;
  **/
 public class StudentDTO {
 
-    private int studentId;
+    private String studentUUID;
     private String studentName;
     private String address;
     private String contactNumber;
@@ -24,6 +24,14 @@ public class StudentDTO {
     private String year;
     private List<Integer> subjectIds;
     private List<SubjectDTO> subjects;
+
+    public String getStudentUUID() {
+        return studentUUID;
+    }
+
+    public void setStudentUUID(String studentUUID) {
+        this.studentUUID = studentUUID;
+    }
 
     public List<SubjectDTO> getSubjects() {
         return subjects;
@@ -52,7 +60,6 @@ public class StudentDTO {
     @Override
     public String toString() {
         return "StudentDTO{" +
-                "studentId=" + studentId +
                 ", studentName='" + studentName + '\'' +
                 ", address='" + address + '\'' +
                 ", contactNumber='" + contactNumber + '\'' +
@@ -70,14 +77,6 @@ public class StudentDTO {
 
     public void setGuardian(GuardianDTO guardian) {
         this.guardian = guardian;
-    }
-
-    public int getStudentId() {
-        return studentId;
-    }
-
-    public void setStudentId(int studentId) {
-        this.studentId = studentId;
     }
 
     public String getStudentName() {

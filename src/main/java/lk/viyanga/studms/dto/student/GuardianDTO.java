@@ -6,7 +6,7 @@ package lk.viyanga.studms.dto.student;
  **/
 public class GuardianDTO {
 
-    private int guardianId;
+    private String guardianUUID;
     private String guardianName;
     private String guardianNIC;
     private String guardianContactNumber;
@@ -14,19 +14,19 @@ public class GuardianDTO {
     @Override
     public String toString() {
         return "GuardianDTO{" +
-                "guardianId=" + guardianId +
+                "guardianUUID='" + guardianUUID + '\'' +
                 ", guardianName='" + guardianName + '\'' +
                 ", guardianNIC='" + guardianNIC + '\'' +
                 ", guardianContactNumber='" + guardianContactNumber + '\'' +
                 '}';
     }
 
-    public int getGuardianId() {
-        return guardianId;
+    public String getGuardianUUID() {
+        return guardianUUID;
     }
 
-    public void setGuardianId(int guardianId) {
-        this.guardianId = guardianId;
+    public void setGuardianUUID(String guardianUUID) {
+        this.guardianUUID = guardianUUID;
     }
 
     public String getGuardianName() {

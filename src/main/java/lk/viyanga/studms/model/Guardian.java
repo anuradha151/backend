@@ -1,6 +1,7 @@
 package lk.viyanga.studms.model;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 /**
  * @author - Anuradha Ranasinghe on 2020-07-19
@@ -11,12 +12,25 @@ public class Guardian {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int guardianId;
+    private String guardianUUID;
     private String guardianName;
     private String guardianContactNumber;
     private String guardianNIC;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "studentId")
     private Student student;
+
+    public Guardian() {
+        guardianUUID = UUID.randomUUID().toString();
+    }
+
+    public String getGuardianUUID() {
+        return guardianUUID;
+    }
+
+    public void setGuardianUUID(String guardianUUID) {
+        this.guardianUUID = guardianUUID;
+    }
 
     public int getGuardianId() {
         return guardianId;
@@ -38,16 +52,16 @@ public class Guardian {
         return guardianContactNumber;
     }
 
+    public void setGuardianContactNumber(String guardianContactNumber) {
+        this.guardianContactNumber = guardianContactNumber;
+    }
+
     public Student getStudent() {
         return student;
     }
 
     public void setStudent(Student student) {
         this.student = student;
-    }
-
-    public void setGuardianContactNumber(String guardianContactNumber) {
-        this.guardianContactNumber = guardianContactNumber;
     }
 
     public String getGuardianNIC() {

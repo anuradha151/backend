@@ -12,7 +12,7 @@ import java.util.Optional;
  **/
 public interface StudentRepository extends JpaRepository<Student, Integer> {
 
-    @Query("SELECT s FROM Student s WHERE s.studentName=?1")
-    Optional<Student> findByName(String name);
+    @Query("SELECT s FROM Student s WHERE s.studentUUID=?1")
+    Optional<Student> findByUUID(String studentUUID);
 
 }

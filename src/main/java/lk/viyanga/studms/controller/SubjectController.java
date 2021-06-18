@@ -30,11 +30,11 @@ public class SubjectController extends AbstractController {
         this.subjectService = subjectService;
     }
 
-    @GetMapping("/findAll/subjects")
+    @GetMapping
     public ResponseEntity<?> findAll() {
-        LOGGER.info("request   - subject/findAll | findAll");
+        LOGGER.info("request   - subject | findAll");
         List<SubjectDTO> all = subjectService.findAll();
-        LOGGER.info("response  - subject/findAll | findAll | payload : {}", all);
+        LOGGER.info("response  - subject | findAll | payload : {}", all);
         return sendSuccessResponse(all);
     }
 

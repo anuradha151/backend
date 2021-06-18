@@ -28,7 +28,7 @@ public class StudentController extends AbstractController {
         this.studentService = studentService;
     }
 
-    @PostMapping("/save")
+    @PostMapping("save")
     public ResponseEntity<?> saveStudent(@RequestBody StudentDTO studentDTO) {
         LOGGER.info("request   - student/save | saveStudent | payload : {}", studentDTO);
         studentService.saveStudent(studentDTO);
@@ -36,11 +36,11 @@ public class StudentController extends AbstractController {
         return sendSuccessResponse("Student saved successfully");
     }
 
-    @GetMapping("/findById")
-    public ResponseEntity<?> findByStudentId(@Param("studentId") int studentId) {
-        LOGGER.info("request   - student/findById | findByStudentId | studentId : {}", studentId);
-        StudentDTO byStudentId = studentService.findByStudentId(studentId);
-        LOGGER.info("response  - student/findById | findByStudentId | studentId : {} | payload : {}", studentId, byStudentId);
+    @GetMapping("by")
+    public ResponseEntity<?> findByStudentUUID(@Param("studentUUID") String studentUUID) {
+        LOGGER.info("request   - student/by | findByStudentUUID | studentUUID : {}", studentUUID);
+        StudentDTO byStudentId = studentService.findByStudentUUID(studentUUID);
+        LOGGER.info("response  - student/by | findByStudentUUID | studentUUID : {} | payload : {}", studentUUID, byStudentId);
         return sendSuccessResponse(byStudentId);
     }
 

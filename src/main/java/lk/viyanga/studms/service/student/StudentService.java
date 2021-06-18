@@ -57,9 +57,9 @@ public class StudentService {
         }
     }
 
-    public StudentDTO findByStudentId(int studentId) {
+    public StudentDTO findByStudentUUID(String studentUUID) {
         try {
-            Optional<Student> byId = studentRepository.findById(studentId);
+            Optional<Student> byId = studentRepository.findByUUID(studentUUID);
             if (!byId.isPresent()) throw new StudMSException("Student not found");
             return toStudent(byId.get());
         } catch (Exception e) {
@@ -71,7 +71,7 @@ public class StudentService {
 
     private StudentDTO toStudent(Student student) {
         StudentDTO studentDTO = new StudentDTO();
-        studentDTO.setStudentId(student.getStudentId());
+        studentDTO.setStudentUUID(student.getStudentUUID());
         studentDTO.setStudentName(student.getStudentName());
         studentDTO.setAddress(student.getAddress());
         studentDTO.setContactNumber(student.getContactNumber());
@@ -106,7 +106,7 @@ public class StudentService {
 
     private GuardianDTO toGuardian(Guardian guardian) {
         GuardianDTO guardianDTO = new GuardianDTO();
-        guardianDTO.setGuardianId(guardian.getGuardianId());
+        guardianDTO.setGuardianUUID(guardian.getGuardianUUID());
         guardianDTO.setGuardianName(guardian.getGuardianName());
         guardianDTO.setGuardianContactNumber(guardian.getGuardianContactNumber());
         guardianDTO.setGuardianNIC(guardian.getGuardianNIC());

@@ -3,6 +3,7 @@ package lk.viyanga.studms.model;
 import lk.viyanga.studms.dto.enums.Gender;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 /**
  * @author - Kavindi Viyanga on 2020-07-19
@@ -13,6 +14,7 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int studentId;
+    private String studentUUID;
     private String studentName;
     private String address;
     private String contactNumber;
@@ -20,6 +22,18 @@ public class Student {
     private String year;
     @Enumerated(EnumType.STRING)
     private Gender gender;
+
+    public Student() {
+        studentUUID = UUID.randomUUID().toString();
+    }
+
+    public String getStudentUUID() {
+        return studentUUID;
+    }
+
+    public void setStudentUUID(String studentUUID) {
+        this.studentUUID = studentUUID;
+    }
 
     public int getStudentId() {
         return studentId;
