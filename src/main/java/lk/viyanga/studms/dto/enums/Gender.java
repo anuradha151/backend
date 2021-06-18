@@ -1,4 +1,4 @@
-package lk.viyanga.studms.util.enums;
+package lk.viyanga.studms.dto.enums;
 
 /**
  * @author - Anuradha Ranasinghe on 2020-07-19

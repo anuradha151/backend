@@ -1,6 +1,6 @@
 package lk.viyanga.studms.model;
 
-import lk.viyanga.studms.util.enums.Gender;
+import lk.viyanga.studms.dto.enums.Gender;
 
 import javax.persistence.*;
 

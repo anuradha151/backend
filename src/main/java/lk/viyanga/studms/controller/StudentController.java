@@ -44,7 +44,7 @@ public class StudentController extends AbstractController {
         return sendSuccessResponse(byStudentId);
     }
 
-    @GetMapping("/findAll")
+    @GetMapping
     public ResponseEntity<?> findAll() {
         LOGGER.info("request   - student/findAll | findAll");
         List<StudentDTO> response = studentService.findAll();

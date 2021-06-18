@@ -1,7 +1,7 @@
 package lk.viyanga.studms.dto.student;
 
 import lk.viyanga.studms.dto.subject.SubjectDTO;
-import lk.viyanga.studms.util.enums.Gender;
+import lk.viyanga.studms.dto.enums.Gender;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
