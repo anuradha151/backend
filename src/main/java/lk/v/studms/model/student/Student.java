@@ -3,6 +3,7 @@ package lk.v.studms.model.student;
 import lk.v.studms.dto.enums.Gender;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -20,11 +21,20 @@ public class Student {
     private String email;
     private String contactNumber;
     private String nic;
+    private Date registeredAt;
     @Enumerated(EnumType.STRING)
     private Gender gender;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "guardianId")
     private Guardian guardian;
+
+    public Date getRegisteredAt() {
+        return registeredAt;
+    }
+
+    public void setRegisteredAt(Date registeredAt) {
+        this.registeredAt = registeredAt;
+    }
 
     public Student() {
         studentUUID = UUID.randomUUID().toString();

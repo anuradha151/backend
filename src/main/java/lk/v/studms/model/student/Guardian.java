@@ -1,6 +1,7 @@
 package lk.v.studms.model.student;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -17,7 +18,16 @@ public class Guardian {
     private String contactNumber;
     private String nic;
     private String email;
+    private Date createdAt;
 
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
 
     public Guardian() {
         guardianUUID = UUID.randomUUID().toString();

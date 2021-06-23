@@ -3,6 +3,7 @@ package lk.v.studms.model.subject;
 import lk.v.studms.model.student.Student;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * @author - Anuradha Ranasinghe on 2020-09-19
@@ -14,6 +15,7 @@ public class StudentBatch {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int studentSubjectId;
+    private Date enrolledAt;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "studentId")
     private Student student;
@@ -27,6 +29,15 @@ public class StudentBatch {
     public StudentBatch(Student student, Batch batch) {
         this.student = student;
         this.batch = batch;
+        this.enrolledAt = new Date();
+    }
+
+    public Date getEnrolledAt() {
+        return enrolledAt;
+    }
+
+    public void setEnrolledAt(Date enrolledAt) {
+        this.enrolledAt = enrolledAt;
     }
 
     public Batch getBatch() {
