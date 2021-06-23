@@ -74,6 +74,7 @@ public class StudentService {
         studentDTO.setStudentUUID(student.getStudentUUID());
         studentDTO.setStudentName(student.getStudentName());
         studentDTO.setAddress(student.getAddress());
+        studentDTO.setEmail(student.getEmail());
         studentDTO.setContactNumber(student.getContactNumber());
         studentDTO.setStudentNIC(student.getStudentNIC());
         studentDTO.setGender(student.getGender());
@@ -89,6 +90,7 @@ public class StudentService {
         Student student = new Student();
         student.setStudentName(studentDTO.getStudentName());
         student.setAddress(studentDTO.getAddress());
+        student.setEmail(studentDTO.getEmail());
         student.setContactNumber(studentDTO.getContactNumber());
         student.setStudentNIC(studentDTO.getStudentNIC());
         student.setGender(studentDTO.getGender());

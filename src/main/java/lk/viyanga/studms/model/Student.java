@@ -17,6 +17,7 @@ public class Student {
     private String studentUUID;
     private String studentName;
     private String address;
+    private String email;
     private String contactNumber;
     private String studentNIC;
     private String year;
@@ -25,6 +26,14 @@ public class Student {
 
     public Student() {
         studentUUID = UUID.randomUUID().toString();
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getStudentUUID() {

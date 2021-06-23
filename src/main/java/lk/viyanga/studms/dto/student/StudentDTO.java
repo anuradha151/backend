@@ -16,6 +16,7 @@ public class StudentDTO {
     private String studentUUID;
     private String studentName;
     private String address;
+    private String email;
     private String contactNumber;
     private String studentNIC;
     @Enumerated(EnumType.STRING)
@@ -31,6 +32,14 @@ public class StudentDTO {
 
     public void setStudentUUID(String studentUUID) {
         this.studentUUID = studentUUID;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public List<SubjectDTO> getSubjects() {
