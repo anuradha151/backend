@@ -1,6 +1,6 @@
 package lk.v.studms.repository.student;
 
-import lk.v.studms.model.Guardian;
+import lk.v.studms.model.student.Guardian;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

@@ -1,4 +1,4 @@
-package lk.v.studms.model;
+package lk.v.studms.model.subject;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

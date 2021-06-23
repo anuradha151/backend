@@ -1,5 +1,7 @@
 package lk.v.studms.model;
 
+import lk.v.studms.model.subject.Subject;
+
 import javax.persistence.*;
 import java.util.Date;
 

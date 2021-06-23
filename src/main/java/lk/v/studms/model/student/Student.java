@@ -1,4 +1,4 @@
-package lk.v.studms.model;
+package lk.v.studms.model.student;
 
 import lk.v.studms.dto.enums.Gender;
 

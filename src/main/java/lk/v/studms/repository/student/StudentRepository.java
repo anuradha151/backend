@@ -1,6 +1,6 @@
 package lk.v.studms.repository.student;
 
-import lk.v.studms.model.Student;
+import lk.v.studms.model.student.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -20,6 +20,9 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
     List<Student> findByName(String name);
 
     @Query("SELECT s FROM Student s WHERE s.nic LIKE %?1%")
-    List<Student> findByNic(String nic);
+    List<Student> findByNicLike(String nic);
+
+    @Query("SELECT s FROM Student s WHERE s.nic=?1")
+    Optional<Student> findByNic(String nic);
 
 }

@@ -2,15 +2,16 @@ package lk.v.studms.service.student.impl;
 
 import lk.v.studms.dto.student.GuardianDTO;
 import lk.v.studms.dto.student.StudentDTO;
-import lk.v.studms.model.Guardian;
+import lk.v.studms.model.student.Guardian;
+import lk.v.studms.model.subject.Batch;
 import lk.v.studms.repository.student.StudentRepository;
-import lk.v.studms.repository.subject.StudentSubjectRepository;
+import lk.v.studms.repository.subject.BatchRepository;
+import lk.v.studms.repository.subject.StudentBatchRepository;
 import lk.v.studms.repository.subject.SubjectRepository;
 import lk.v.studms.service.student.StudentService;
 import lk.v.studms.exception.StudMSException;
-import lk.v.studms.model.Student;
-import lk.v.studms.model.StudentSubject;
-import lk.v.studms.model.Subject;
+import lk.v.studms.model.student.Student;
+import lk.v.studms.model.subject.StudentBatch;
 import lk.v.studms.repository.student.GuardianRepository;
 import org.springframework.stereotype.Service;
 
@@ -28,18 +29,22 @@ public class StudentServiceImpl implements StudentService {
     private final StudentRepository studentRepository;
     private final GuardianRepository guardianRepository;
     private final SubjectRepository subjectRepository;
-    private final StudentSubjectRepository studentSubjectRepository;
+    private final StudentBatchRepository studentBatchRepository;
+    private final BatchRepository batchRepository;
 
-    public StudentServiceImpl(StudentRepository studentRepository, GuardianRepository guardianRepository, SubjectRepository subjectRepository, StudentSubjectRepository studentSubjectRepository) {
+    public StudentServiceImpl(StudentRepository studentRepository, GuardianRepository guardianRepository, SubjectRepository subjectRepository, StudentBatchRepository studentBatchRepository, BatchRepository batchRepository) {
         this.studentRepository = studentRepository;
         this.guardianRepository = guardianRepository;
         this.subjectRepository = subjectRepository;
-        this.studentSubjectRepository = studentSubjectRepository;
+        this.studentBatchRepository = studentBatchRepository;
+        this.batchRepository = batchRepository;
     }
 
     @Override
     public void saveStudent(StudentDTO studentDTO) {
         try {
+            Optional<Student> byNic = studentRepository.findByNic(studentDTO.getNic());
+            if (byNic.isPresent())throw new StudMSException("Existing NIC number");
             Student student = toStudent(studentDTO);
             if (studentDTO.getGuardian() != null) {
                 Optional<Guardian> byUUID = guardianRepository.findByUUID(studentDTO.getGuardian().getGuardianUUID());
@@ -50,10 +55,10 @@ public class StudentServiceImpl implements StudentService {
                 }
             }
             studentRepository.save(student);
-            if (studentDTO.getSubjectIds() != null) {
-                for (Integer subject : studentDTO.getSubjectIds()) {
-                    Optional<Subject> byId = subjectRepository.findById(subject);
-                    byId.ifPresent(value -> studentSubjectRepository.save(new StudentSubject(student, value)));
+            if (studentDTO.getBatchIds() != null) {
+                for (String batchUUID : studentDTO.getBatchIds()) {
+                    Optional<Batch> byUUID = batchRepository.findByUUID(batchUUID);
+                    byUUID.ifPresent(value -> studentBatchRepository.save(new StudentBatch(student, byUUID.get())));
                 }
             }
         } catch (Exception e) {
@@ -113,7 +118,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<StudentDTO> findByStudentNic(String nic) {
-        List<Student> all = studentRepository.findByNic(nic);
+        List<Student> all = studentRepository.findByNicLike(nic);
         return all.stream().map(this::toStudent).collect(Collectors.toList());
     }
 
@@ -130,7 +135,7 @@ public class StudentServiceImpl implements StudentService {
         if (student.getGuardian() != null) {
             studentDTO.setGuardian(toGuardian(student.getGuardian()));
         }
-        studentDTO.setSubjects(studentSubjectRepository.findByStudentId(student.getStudentId()));
+        studentDTO.setBatches(studentBatchRepository.findByStudentId(student.getStudentId()));
         return studentDTO;
     }
 

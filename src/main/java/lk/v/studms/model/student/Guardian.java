@@ -1,4 +1,4 @@
-package lk.v.studms.model;
+package lk.v.studms.model.student;
 
 import javax.persistence.*;
 import java.util.UUID;

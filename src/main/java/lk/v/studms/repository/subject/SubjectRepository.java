@@ -1,7 +1,7 @@
 package lk.v.studms.repository.subject;
 
 import lk.v.studms.dto.subject.SubjectDTO;
-import lk.v.studms.model.Subject;
+import lk.v.studms.model.subject.Subject;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

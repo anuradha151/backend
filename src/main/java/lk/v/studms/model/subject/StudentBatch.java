@@ -1,4 +1,6 @@
-package lk.v.studms.model;
+package lk.v.studms.model.subject;
+
+import lk.v.studms.model.student.Student;
 
 import javax.persistence.*;
 
@@ -7,8 +9,8 @@ import javax.persistence.*;
  * @project - stud-ms
  **/
 @Entity
-@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"studentId", "subjectId"})})
-public class StudentSubject {
+@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"studentId", "batchId"})})
+public class StudentBatch {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int studentSubjectId;
@@ -16,15 +18,23 @@ public class StudentSubject {
     @JoinColumn(name = "studentId")
     private Student student;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "subjectId")
-    private Subject subject;
+    @JoinColumn(name = "batchId")
+    private Batch batch;
 
-    public StudentSubject() {
+    public StudentBatch() {
     }
 
-    public StudentSubject(Student student, Subject subject) {
+    public StudentBatch(Student student, Batch batch) {
         this.student = student;
-        this.subject = subject;
+        this.batch = batch;
+    }
+
+    public Batch getBatch() {
+        return batch;
+    }
+
+    public void setBatch(Batch batch) {
+        this.batch = batch;
     }
 
     public int getStudentSubjectId() {
@@ -43,11 +53,4 @@ public class StudentSubject {
         this.student = student;
     }
 
-    public Subject getSubject() {
-        return subject;
-    }
-
-    public void setSubject(Subject subject) {
-        this.subject = subject;
-    }
 }

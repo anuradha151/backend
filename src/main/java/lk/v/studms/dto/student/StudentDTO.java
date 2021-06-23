@@ -1,6 +1,7 @@
 package lk.v.studms.dto.student;
 
 import lk.v.studms.dto.enums.Gender;
+import lk.v.studms.dto.subject.BatchDTO;
 import lk.v.studms.dto.subject.SubjectDTO;
 
 import javax.persistence.EnumType;
@@ -22,8 +23,16 @@ public class StudentDTO {
     @Enumerated(EnumType.STRING)
     private Gender gender;
     private GuardianDTO guardian;
-    private List<Integer> subjectIds;
-    private List<SubjectDTO> subjects;
+    private List<String> batchIds;
+    private List<BatchDTO> batches;
+
+    public List<BatchDTO> getBatches() {
+        return batches;
+    }
+
+    public void setBatches(List<BatchDTO> batches) {
+        this.batches = batches;
+    }
 
     public String getStudentUUID() {
         return studentUUID;
@@ -41,20 +50,12 @@ public class StudentDTO {
         this.email = email;
     }
 
-    public List<SubjectDTO> getSubjects() {
-        return subjects;
+    public List<String> getBatchIds() {
+        return batchIds;
     }
 
-    public void setSubjects(List<SubjectDTO> subjects) {
-        this.subjects = subjects;
-    }
-
-    public List<Integer> getSubjectIds() {
-        return subjectIds;
-    }
-
-    public void setSubjectIds(List<Integer> subjectIds) {
-        this.subjectIds = subjectIds;
+    public void setBatchIds(List<String> batchIds) {
+        this.batchIds = batchIds;
     }
 
     @Override
@@ -68,8 +69,8 @@ public class StudentDTO {
                 ", nic='" + nic + '\'' +
                 ", gender=" + gender +
                 ", guardian=" + guardian +
-                ", subjectIds=" + subjectIds +
-                ", subjects=" + subjects +
+                ", batchIds=" + batchIds +
+                ", batches=" + batches +
                 '}';
     }
 

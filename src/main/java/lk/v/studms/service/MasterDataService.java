@@ -1,7 +1,7 @@
 package lk.v.studms.service;
 
 import lk.v.studms.repository.subject.SubjectRepository;
-import lk.v.studms.model.Subject;
+import lk.v.studms.model.subject.Subject;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
