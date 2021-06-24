@@ -1,4 +1,6 @@
-package lk.v.studms.model;
+package lk.v.studms.model.teacher;
+
+import lk.v.studms.model.DateAudit;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,19 +10,27 @@ import java.util.Date;
 import java.util.UUID;
 
 @Entity
-public class Teacher {
+public class Teacher extends DateAudit {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int teacherId;
     private String teacherUUID;
     private String name;
+    private String nic;
     private String email;
     private String contactNumber;
-    private Date registeredAt;
 
     public Teacher() {
         teacherUUID = UUID.randomUUID().toString();
+    }
+
+    public String getNic() {
+        return nic;
+    }
+
+    public void setNic(String nic) {
+        this.nic = nic;
     }
 
     public int getTeacherId() {
@@ -61,13 +71,5 @@ public class Teacher {
 
     public void setContactNumber(String contactNumber) {
         this.contactNumber = contactNumber;
-    }
-
-    public Date getRegisteredAt() {
-        return registeredAt;
-    }
-
-    public void setRegisteredAt(Date registeredAt) {
-        this.registeredAt = registeredAt;
     }
 }

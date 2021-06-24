@@ -1,5 +1,6 @@
 package lk.v.studms.service.student;
 
+import lk.v.studms.dto.student.GuardianDTO;
 import lk.v.studms.dto.student.StudentDTO;
 
 import java.util.List;
@@ -17,4 +18,6 @@ public interface StudentService {
     List<StudentDTO> findByStudentName(String name);
 
     List<StudentDTO> findByStudentNic(String nic);
+
+    List<GuardianDTO> findByGuardianName(String query);
 }

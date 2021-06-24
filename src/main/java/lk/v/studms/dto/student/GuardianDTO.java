@@ -16,6 +16,17 @@ public class GuardianDTO {
         return guardianUUID;
     }
 
+    public GuardianDTO() {
+    }
+
+    public GuardianDTO(String guardianUUID, String name, String nic, String contactNumber, String email) {
+        this.guardianUUID = guardianUUID;
+        this.name = name;
+        this.nic = nic;
+        this.contactNumber = contactNumber;
+        this.email = email;
+    }
+
     public void setGuardianUUID(String guardianUUID) {
         this.guardianUUID = guardianUUID;
     }

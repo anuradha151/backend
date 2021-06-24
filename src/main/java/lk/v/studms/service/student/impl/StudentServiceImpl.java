@@ -122,6 +122,11 @@ public class StudentServiceImpl implements StudentService {
         return all.stream().map(this::toStudent).collect(Collectors.toList());
     }
 
+    @Override
+    public List<GuardianDTO> findByGuardianName(String query) {
+        return guardianRepository.findByNameLike(query);
+    }
+
 
     private StudentDTO toStudent(Student student) {
         StudentDTO studentDTO = new StudentDTO();
