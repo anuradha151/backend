@@ -7,11 +7,20 @@ public class TeacherDTO {
     private String teacherUUID;
     private String name;
     private String email;
+    private String nic;
     private String contactNumber;
     private Date registeredAt;
 
     public String getTeacherUUID() {
         return teacherUUID;
+    }
+
+    public String getNic() {
+        return nic;
+    }
+
+    public void setNic(String nic) {
+        this.nic = nic;
     }
 
     public void setTeacherUUID(String teacherUUID) {
